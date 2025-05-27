@@ -1,0 +1,2688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W1 Consultoria: Planejamento Estratégico – VIA BRASIL S.A</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Cores (Mantidas do design original) */
+        --primary-color: #0d1b2a;
+        --secondary-color: #00cec9; /* Teal / Ciano - W1 Global Accent */
+        --accent-color-dark-theme: #1e293b; /* Azul escuro acinzentado */
+        --bg-dark-primary: #0d1b2a; /* Azul muito escuro (quase preto) */
+        --bg-dark-secondary: #1c2a3a; /* Azul escuro um pouco mais claro */
+        --bg-light-primary: #ffffff;
+        --bg-light-secondary: #f3f4f6; /* Cinza bem claro */
+        --text-light-primary: #f3f4f6;
+        --text-light-secondary: #a0aec0;
+        --text-dark-primary: #1a202c;
+        --text-dark-secondary: #4a5568;
+        --border-color-dark: #334155;
+        --border-color-light: #e2e8f0;
+
+        /* Sombras (Mantidas do design original) */
+        --card-shadow-dark: 0 4px 15px rgba(0, 0, 0, 0.2);
+        --card-shadow-light: 0 8px 20px rgba(0, 0, 0, 0.07);
+        --card-shadow-hover-light: 0 12px 28px rgba(0, 0, 0, 0.12),
+          0 5px 10px rgba(0, 0, 0, 0.1);
+        --card-shadow-hover-dark: 0 8px 25px rgba(0, 206, 201, 0.15),
+          0 4px 10px rgba(0, 206, 201, 0.1);
+
+        /* Fontes (Mantidas do design original) */
+        --font-primary: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, sans-serif;
+        --font-secondary: "Lato", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+          sans-serif;
+
+        /* Cores para as barras do Gantt TIVA (ajustadas para 5 fases + suporte) */
+        --tiva-gantt-fase1-color: #a0d2db; /* Azul claro suave */
+        --tiva-gantt-fase2-color: #80b9ad; /* Verde azulado suave */
+        --tiva-gantt-fase3-color: #76c7c0; /* Teal mais claro */
+        --tiva-gantt-fase4-color: #5eaaa8; /* Teal médio */
+        --tiva-gantt-fase5-docs-color: #f3d5a5; /* Amarelo/Laranja claro para Fase de Documentação */
+        --tiva-gantt-ongoing-color: #bcaaa4; /* Marrom claro/Bege para suporte */
+
+        /* Cores para as barras do Gantt Via Brasil (NEW) */
+        --viabrasil-gantt-fase1-color: #c8e6c9;
+        --viabrasil-gantt-fase2-color: #a5d6a7;
+        --viabrasil-gantt-fase3-color: #81c784;
+        --viabrasil-gantt-fase4-color: #66bb6a;
+        --viabrasil-gantt-fase5-color: #4caf50;
+        --viabrasil-gantt-fase6-docs-color: #388e3c;
+        --viabrasil-gantt-ongoing-color: #7986cb;
+
+        --holding-sa-bg: #e0f2f7;
+        --governance-node-bg: #152238;
+        --shareholders-node-bg: #f0f9ff;
+        --assets-node-bg: #e6f7ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-secondary);
+        line-height: 1.6;
+        color: var(--text-light-primary);
+        background-color: var(--bg-dark-primary); /* Default body background */
+        overflow-x: hidden;
+      }
+
+      body.light-theme-override {
+        background-color: var(--bg-light-secondary);
+        color: var(--text-dark-primary);
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 20px;
+        position: relative;
+        text-align: center;
+        background-color: var(--bg-dark-primary);
+        color: var(--text-light-primary);
+        border-bottom: 1px solid var(--border-color-dark);
+        overflow: hidden;
+      }
+
+      section.light-section {
+        background-color: var(--bg-light-primary);
+        color: var(--text-dark-primary);
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      section.light-gray-section {
+        background-color: var(--bg-light-secondary);
+        color: var(--text-dark-primary);
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      .capa-section {
+        background-color: var(--primary-color);
+        color: var(--text-light-primary);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding-bottom: 60px;
+        border-bottom: none;
+      }
+      .capa-content {
+        position: relative;
+        z-index: 2;
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo-container-capa {
+        margin-bottom: 35px;
+      }
+      .logo-shape-capa {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 206, 201, 0.1);
+        border: 2px solid var(--secondary-color);
+        border-radius: 22px;
+        transform: rotate(45deg);
+        box-shadow: 0 0 20px rgba(0, 206, 201, 0.25);
+      }
+      .logo-text-capa {
+        font-family: var(--font-primary);
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-light-primary);
+        z-index: 2;
+        transform: rotate(-45deg);
+      }
+      .logo-text-capa span {
+        color: var(--secondary-color);
+      }
+      .capa-slide-title {
+        font-family: var(--font-primary);
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        color: var(--text-light-primary);
+      }
+      .capa-slide-title .highlight {
+        color: var(--secondary-color);
+      }
+      .capa-details {
+        font-family: var(--font-secondary);
+        font-size: 1.2rem;
+        color: var(--text-light-secondary);
+        margin-bottom: 35px;
+      }
+
+      .sectional-cover-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: var(--bg-dark-secondary);
+        min-height: 100vh;
+      }
+      .sectional-cover-slide .container {
+        align-items: center;
+      }
+      .sectional-cover-title {
+        font-family: var(--font-primary);
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: var(--text-light-primary);
+        margin-bottom: 20px;
+        line-height: 1.2;
+        border-bottom: 4px solid var(--secondary-color);
+        padding-bottom: 15px;
+        display: inline-block;
+      }
+      .kamby-logo-container {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .kamby-logo-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid var(--secondary-color);
+        box-shadow: 0 0 20px rgba(0, 206, 201, 0.4);
+        object-fit: cover;
+      }
+      .kamby-company-name {
+        font-family: var(--font-secondary);
+        font-size: 1rem;
+        color: var(--text-light-secondary);
+        margin-top: 12px;
+        font-weight: 500;
+      }
+
+      h2.section-title {
+        font-family: var(--font-primary);
+        font-size: 2.6rem;
+        font-weight: 300;
+        color: var(--text-light-primary);
+        position: relative;
+        padding-bottom: 20px;
+        text-align: center;
+        width: fit-content;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+      }
+      h2.section-title.on-light-bg {
+        color: var(--text-dark-primary);
+      }
+      h2.section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        border-radius: 2px;
+      }
+
+      .list-section-content ul {
+        list-style: none;
+        padding: 0;
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .list-section-content li {
+        background-color: var(--accent-color-dark-theme);
+        color: var(--text-light-primary);
+        padding: 18px 25px;
+        border-radius: 10px;
+        margin-bottom: 18px;
+        box-shadow: var(--card-shadow-dark);
+        font-size: 1.05rem;
+        text-align: left;
+        display: flex;
+        align-items: flex-start;
+        border-left: 4px solid var(--secondary-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .list-section-content li::before {
+        content: "▸";
+        color: var(--secondary-color);
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 12px;
+        font-size: 1.1em;
+        line-height: 1.6;
+        flex-shrink: 0;
+      }
+      .list-section-content li > span {
+        flex-grow: 1;
+      }
+
+      section.light-section .list-section-content li,
+      section.light-gray-section .list-section-content li {
+        background-color: var(--bg-light-primary);
+        color: var(--text-dark-primary);
+        box-shadow: var(--card-shadow-light);
+      }
+      section.light-section .list-section-content li strong::before,
+      section.light-gray-section .list-section-content li strong::before {
+        content: none;
+      }
+
+      .list-section-content li:hover {
+        transform: translateY(-5px) scale(1.02);
+      }
+      section:not(.light-section):not(.light-gray-section)
+        .list-section-content
+        li:hover {
+        box-shadow: var(--card-shadow-hover-dark);
+      }
+      section.light-gray-section .list-section-content li:hover,
+      section.light-section .list-section-content li:hover {
+        box-shadow: var(--card-shadow-hover-light);
+      }
+      .list-section-content h3 {
+        font-family: var(--font-primary);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      section.light-section .list-section-content h3,
+      section.light-gray-section .list-section-content h3 {
+        color: var(--primary-color);
+      }
+      .list-section-content .intro-paragraph {
+        font-size: 1.1rem;
+        color: var(--text-light-secondary);
+        margin-bottom: 25px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
+      .list-section-content .intro-paragraph.centered {
+        text-align: center;
+      }
+      section.light-section .list-section-content .intro-paragraph,
+      section.light-gray-section .list-section-content .intro-paragraph {
+        color: var(--text-dark-secondary);
+      }
+      .risk-summary-paragraph {
+        font-size: 1.15rem;
+        color: var(--text-dark-secondary);
+        margin: 15px 0;
+        padding: 0 10%;
+        text-align: justify;
+        line-height: 1.8;
+      }
+
+      #kamby-final-slide-3 .container {
+        max-width: 1200px;
+      }
+      .institutional-content-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 40px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .institutional-text-content {
+        flex: 3;
+      }
+      .institutional-text-content .intro-paragraph {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: justify;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1em;
+      }
+      .institutional-text-content .intro-paragraph:last-child {
+        margin-bottom: 0;
+      }
+
+      .institutional-logo-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 10px;
+      }
+      .kamby-rectangular-logo {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        border: 3px solid var(--primary-color);
+        border-radius: 8px;
+        box-shadow: var(--card-shadow-light);
+      }
+      @media (max-width: 860px) {
+        .institutional-content-wrapper {
+          flex-direction: column;
+          align-items: center;
+        }
+        .institutional-text-content {
+          flex: none;
+          width: 100%;
+          margin-bottom: 30px;
+        }
+        .institutional-text-content .intro-paragraph {
+          text-align: left;
+        }
+        .institutional-logo-column {
+          flex: none;
+          width: 100%;
+          max-width: 200px;
+          padding-top: 0;
+        }
+      }
+
+      .organogram-section {
+        color: var(--text-dark-primary);
+        padding: 60px 20px;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      section.light-section .organogram-section,
+      section.light-gray-section .organogram-section {
+        color: var(--text-dark-primary);
+      }
+
+      .organogram-section h2.section-title {
+        font-family: var(--font-primary);
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--text-dark-primary);
+        position: relative;
+        padding-bottom: 20px;
+        text-align: center;
+        width: fit-content;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+      }
+      section:not(.light-section):not(.light-gray-section)
+        .organogram-section
+        h2.section-title {
+        color: var(--text-light-primary);
+      }
+      section.light-section .organogram-section h2.section-title,
+      section.light-gray-section .organogram-section h2.section-title {
+        color: var(--text-dark-primary);
+      }
+
+      .organogram-section h2.section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        border-radius: 2px;
+      }
+
+      .organogram-container {
+        text-align: center;
+        width: 100%;
+        max-width: 1050px;
+        margin: 20px auto 0;
+      }
+
+      .organogram-container .node {
+        background-color: var(--bg-light-primary);
+        border: 1px solid var(--border-color-light);
+        color: var(--text-dark-primary);
+        padding: 12px 15px;
+        border-radius: 8px;
+        display: inline-block;
+        margin: 8px;
+        min-width: 200px;
+        max-width: 250px;
+        box-shadow: var(--card-shadow-light);
+        position: relative;
+        vertical-align: top;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-align: left;
+      }
+
+      .organogram-container .node:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--card-shadow-hover-light);
+      }
+
+      .organogram-container .node.sa-node {
+        background-color: #e6fffa;
+        border: 2px solid var(--secondary-color);
+        color: var(--primary-color);
+        min-width: 260px;
+      }
+      .organogram-container .node.sa-node.holding-sa {
+        background-color: var(--holding-sa-bg);
+        border: 3px solid var(--secondary-color);
+        color: var(--primary-color);
+        min-width: 290px;
+      }
+      .organogram-container .node.sa-node h4 {
+        color: var(--primary-color);
+        text-align: center;
+      }
+      .organogram-container .node.sa-node p {
+        color: var(--text-dark-secondary);
+        text-align: center;
+      }
+
+      .organogram-container .node.governance-assembly,
+      .organogram-container .node.governance-board,
+      .organogram-container .node.diretoria {
+        background-color: var(--governance-node-bg);
+        border-color: var(--secondary-color);
+        color: var(--text-light-primary);
+      }
+      .organogram-container .node.governance-assembly h4,
+      .organogram-container .node.governance-board h4,
+      .organogram-container .node.diretoria h4 {
+        color: var(--secondary-color);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .organogram-container .node.governance-assembly p,
+      .organogram-container .node.governance-board p,
+      .organogram-container .node.diretoria p {
+        color: var(--text-light-secondary);
+      }
+
+      .organogram-container .node.shareholders-group {
+        background-color: var(--shareholders-node-bg);
+        border: 1px solid #a0d2db;
+        color: var(--text-dark-primary);
+      }
+      .organogram-container .node.shareholders-group h4 {
+        color: var(--primary-color);
+      }
+      .organogram-container .node.shareholders-group p,
+      .organogram-container .node.shareholders-group ul li {
+        color: var(--text-dark-secondary);
+      }
+      .organogram-container .node.shareholders-group ul li::before {
+        color: var(--primary-color);
+      }
+
+      .organogram-container .node.operational-entity {
+        background-color: #fffbeb;
+        border: 1px solid #fcd34d;
+        color: #78350f;
+      }
+      .organogram-container .node.operational-entity h4 {
+        color: #92400e;
+      }
+      .organogram-container .node.operational-entity p {
+        color: #b45309;
+      }
+      .organogram-container .node.assets-management-entity {
+        background-color: var(--assets-node-bg);
+        border: 2px solid #75b8c8;
+        color: #003f5c;
+      }
+      .organogram-container .node.assets-management-entity h4 {
+        color: #005073;
+      }
+      .organogram-container .node.assets-management-entity p,
+      .organogram-container .node.assets-management-entity ul li {
+        color: #003f5c;
+      }
+      .organogram-container .node.assets-management-entity ul li::before {
+        color: #005073;
+      }
+
+      .organogram-container .node h4 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-family: var(--font-primary);
+        font-weight: 600;
+        font-size: 1em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding-bottom: 6px;
+      }
+      .organogram-container .node.sa-node.holding-sa h4 {
+        font-size: 1em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .organogram-container .node.sa-node h4 {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .organogram-container .node p {
+        margin-bottom: 4px;
+        font-size: 0.8em;
+        line-height: 1.5;
+      }
+      .organogram-container .node ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 6px;
+        margin-bottom: 0;
+        text-align: left;
+        font-size: 0.8em;
+      }
+      .organogram-container .node ul li {
+        margin-bottom: 4px;
+        padding-left: 12px;
+        position: relative;
+      }
+      .organogram-container .node ul li::before {
+        content: "▪";
+        position: absolute;
+        left: 0;
+        opacity: 0.9;
+        font-size: 0.9em;
+        line-height: inherit;
+      }
+      .organogram-container .node ul li strong {
+        font-weight: 600;
+      }
+      .organogram-container .node.sa-node ul li strong,
+      .organogram-container .node.shareholders-group ul li strong,
+      .organogram-container .node.operational-entity ul li strong {
+        color: var(--primary-color);
+      }
+      .organogram-container .node.governance-assembly ul li strong,
+      .organogram-container .node.governance-board ul li strong,
+      .organogram-container .node.diretoria ul li strong {
+        color: var(--text-light-primary);
+      }
+      .organogram-container .node.assets-management-entity ul li strong {
+        color: #005073;
+      }
+
+      .organogram-container .level {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .organogram-container .structure-group {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+      }
+      .organogram-container .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 5px;
+        flex: 1;
+        min-width: 240px;
+        max-width: 270px;
+      }
+      .organogram-container .column-title {
+        font-size: 1.05em;
+        color: var(--text-dark-secondary);
+        margin-bottom: 12px;
+        font-weight: 600;
+        font-family: var(--font-primary);
+      }
+      .organogram-container .connector {
+        width: 2px;
+        background-color: var(--secondary-color);
+        opacity: 0.6;
+        margin: 8px auto;
+      }
+      .organogram-container .connector.vertical-short {
+        height: 15px;
+      }
+      .organogram-container .connector.vertical-medium {
+        height: 25px;
+      }
+
+      .organogram-container .node p.cnpj-text {
+        font-size: 0.7em;
+        color: var(--text-dark-secondary);
+        margin-top: 5px;
+        text-align: center;
+      }
+      .organogram-container .node p.info-text {
+        font-size: 0.7em;
+        font-style: italic;
+        margin-top: 6px;
+        opacity: 0.8;
+      }
+
+      .organogram-container .node.sa-node p.info-text,
+      .organogram-container .node.shareholders-group p.info-text,
+      .organogram-container .node.operational-entity p.info-text {
+        color: var(--text-dark-secondary);
+      }
+      .organogram-container .node.governance-assembly p.info-text,
+      .organogram-container .node.governance-board p.info-text,
+      .organogram-container .node.diretoria p.info-text {
+        color: var(--text-light-secondary);
+      }
+      .organogram-container .node.assets-management-entity p.info-text {
+        color: var(--text-dark-secondary);
+      }
+
+      @media (max-width: 992px) {
+        .organogram-section .organogram-container .structure-group {
+          flex-direction: column;
+          align-items: center;
+        }
+        .organogram-section .organogram-container .column {
+          width: 100%;
+          max-width: 450px;
+          margin-bottom: 25px;
+        }
+        .organogram-section .organogram-container .column:last-child {
+          margin-bottom: 0;
+        }
+        .organogram-section h2.section-title {
+          font-size: 2.2rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .organogram-section h2.section-title {
+          font-size: 2rem;
+          margin-bottom: 25px;
+        }
+        .organogram-section .organogram-container .node {
+          min-width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 10px 12px;
+        }
+        .organogram-section .organogram-container .node h4 {
+          font-size: 0.95em;
+        }
+        .organogram-section .organogram-container .node.sa-node.holding-sa h4 {
+          font-size: 0.9em;
+        }
+        .organogram-section .organogram-container .node p,
+        .organogram-section .organogram-container .node ul {
+          font-size: 0.75em;
+        }
+        .organogram-section .organogram-container .column {
+          min-width: 90%;
+        }
+      }
+      /* --- END: Organogram CSS --- */
+
+      /* --- START: Gantt Chart CSS --- */
+      .gantt-section {
+        background-color: var(--bg-light-primary);
+        color: var(--text-dark-primary);
+        padding: 20px 15px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      #viabrasil-gantt .section-title {
+        font-family: var(--font-primary);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-dark-primary);
+        position: relative;
+        padding-bottom: 15px;
+        text-align: center;
+        width: fit-content;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 35px;
+      }
+      #viabrasil-gantt .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 70px;
+        height: 4px;
+        background-color: #005f73;
+        border-radius: 2px;
+      }
+
+      .gantt-chart-wrapper {
+        width: 100%;
+        padding: 2px 0;
+        overflow-x: auto; /* This will no longer show a scrollbar if min-width on child is removed */
+      }
+      .gantt-container-inner {
+        width: 100%;
+        border: 1px solid var(--border-color-light);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow-light);
+        background-color: var(--bg-light-primary);
+        margin: 0 auto;
+      }
+      #viabrasil-gantt .gantt-container-inner {
+        /* min-width: 1100px; */ /* MODIFIED: This line is removed to prevent horizontal scroll */
+      }
+
+      .gantt-header {
+        display: grid;
+        background-color: #eef2f5;
+        color: var(--text-dark-primary);
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-color-light);
+        font-family: var(--font-primary);
+      }
+      #viabrasil-gantt .gantt-header {
+        grid-template-columns: 2.8fr repeat(9, 1fr);
+      }
+      #viabrasil-gantt .gantt-header > div {
+        padding: 10px 8px;
+        text-align: center;
+        border-right: 1px solid var(--border-color-light);
+        font-size: 0.75em;
+        white-space: normal;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #viabrasil-gantt .gantt-header > div:last-child {
+        border-right: none;
+      }
+      #viabrasil-gantt .gantt-header .header-task {
+        text-align: left;
+        padding-left: 15px;
+        font-size: 0.82em;
+      }
+
+      .gantt-row {
+        display: grid;
+        border-bottom: 1px solid var(--border-color-light);
+        background-color: var(--bg-light-primary);
+        transition: background-color 0.2s ease;
+      }
+      .gantt-row:last-child {
+        border-bottom: none;
+      }
+      .gantt-row:hover {
+        background-color: #f8f9fa;
+      }
+      #viabrasil-gantt .gantt-row {
+        grid-template-columns: 2.8fr repeat(9, 1fr);
+      }
+      #viabrasil-gantt .gantt-task-name {
+        padding: 9px 15px;
+        font-size: 0.78em;
+        color: var(--text-dark-secondary);
+        border-right: 1px solid var(--border-color-light);
+        display: flex;
+        align-items: center;
+        line-height: 1.4;
+      }
+      #viabrasil-gantt .gantt-phase-cell {
+        position: relative;
+        padding: 7px 5px;
+        border-right: 1px solid var(--border-color-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #viabrasil-gantt .gantt-phase-cell:last-child {
+        border-right: none;
+      }
+      #viabrasil-gantt .gantt-bar-container {
+        width: 95%;
+        height: 18px;
+        background-color: transparent;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .gantt-bar {
+        height: 100%;
+        border-radius: 4px;
+        opacity: 0;
+      }
+
+      /* TIVA Gantt Bar Colors (Legacy) */
+      .bar-fase1 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-fase1-color);
+      }
+      .bar-fase2 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-fase2-color);
+      }
+      .bar-fase3 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-fase3-color);
+      }
+      .bar-fase4 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-fase4-color);
+      }
+      .bar-fase5 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-fase5-docs-color);
+      }
+      .bar-ongoing {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--tiva-gantt-ongoing-color);
+      }
+
+      /* VIA BRASIL Gantt Bar Colors */
+      #viabrasil-gantt .bar-fase1 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase1-color);
+      }
+      #viabrasil-gantt .bar-fase2 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase2-color);
+      }
+      #viabrasil-gantt .bar-fase3 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase3-color);
+      }
+      #viabrasil-gantt .bar-fase4 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase4-color);
+      }
+      #viabrasil-gantt .bar-fase5 {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase5-color);
+      }
+      #viabrasil-gantt .bar-fase6-docs {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-fase6-docs-color);
+      }
+      #viabrasil-gantt .bar-ongoing {
+        width: 100%;
+        opacity: 1;
+        background-color: var(--viabrasil-gantt-ongoing-color);
+      }
+      /* --- END: Gantt Chart CSS --- */
+
+      .styled-table {
+        width: 100%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        text-align: left;
+      }
+      .light-gray-section .styled-table,
+      .light-section .styled-table {
+        background-color: var(--bg-light-primary);
+        color: var(--text-dark-primary);
+        box-shadow: var(--card-shadow-light);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+        border: 1px solid var(--border-color-light);
+        vertical-align: top;
+      }
+      .light-gray-section .styled-table th,
+      .light-section .styled-table th {
+        background-color: var(--bg-light-secondary);
+        color: var(--primary-color);
+        font-family: var(--font-primary);
+        font-weight: 700;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--secondary-color);
+        border-top: 1px solid var(--border-color-light);
+        border-left: 1px solid var(--border-color-light);
+        border-right: 1px solid var(--border-color-light);
+      }
+      .light-gray-section .styled-table td,
+      .light-section .styled-table td {
+        color: var(--text-dark-secondary);
+      }
+      .light-gray-section .styled-table tbody tr:nth-child(even),
+      .light-section .styled-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .light-gray-section .styled-table tbody tr:hover,
+      .light-section .styled-table tbody tr:hover {
+        background-color: #e9ecef;
+      }
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 20px;
+        border: 1px solid var(--border-color-light);
+        border-radius: 8px;
+        background-color: var(--bg-light-primary);
+      }
+      .styled-table tfoot tr {
+        font-weight: bold;
+        background-color: var(--bg-light-secondary);
+      }
+      .styled-table tfoot td {
+        color: var(--primary-color);
+      }
+      .styled-table tfoot td.economy-cell {
+        text-align: center;
+        font-size: 1.1em;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: var(--primary-color);
+        background-color: var(--bg-light-primary);
+        border-top: 2px solid var(--secondary-color);
+      }
+
+      .investment-table-wrapper {
+        width: 100%;
+        max-width: 600px;
+        margin: 30px auto;
+      }
+      .investment-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--accent-color-dark-theme);
+        color: var(--text-light-primary);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow-dark);
+        font-size: 1rem;
+      }
+      .investment-table th,
+      .investment-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border-color-dark);
+        text-align: left;
+      }
+      .investment-table th {
+        background-color: rgba(0, 0, 0, 0.25);
+        font-family: var(--font-primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+      }
+      .investment-table td:last-child {
+        text-align: right;
+        font-weight: bold;
+        color: var(--text-light-primary);
+      }
+      .investment-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .investment-table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      .investment-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light-secondary);
+        margin-bottom: 15px;
+      }
+      .payment-method-title {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .investment-card-vista {
+        background-color: var(--accent-color-dark-theme);
+        color: var(--text-light-primary);
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow-dark);
+        text-align: center;
+        border: 1px solid var(--border-color-dark);
+        border-top: 4px solid var(--secondary-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        max-width: 500px;
+        margin: 20px auto;
+      }
+      .investment-card-vista:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover-dark);
+      }
+      .investment-card-vista h5 {
+        font-family: var(--font-primary);
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-light-primary);
+        margin-bottom: 10px;
+      }
+      .investment-card-vista .price {
+        font-family: var(--font-primary);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-top: 10px;
+        display: block;
+      }
+
+      .final-message-text {
+        font-family: var(--font-secondary);
+        font-size: 1.7rem;
+        line-height: 1.7;
+        font-weight: 400;
+        max-width: 800px;
+        color: var(--text-light-primary);
+        text-align: center;
+        margin: 0 auto;
+      }
+      .final-message-text strong {
+        color: var(--secondary-color);
+        font-weight: 700;
+      }
+
+      .navigation {
+        position: fixed;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+      }
+      .nav-dots {
+        list-style: none;
+        padding: 0;
+      }
+      .nav-dot {
+        margin: 8px 0;
+      }
+      .nav-link {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .nav-link.on-light-bg-dot {
+        background-color: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(0, 0, 0, 0.35);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: scale(1.3);
+        box-shadow: 0 0 8px var(--secondary-color);
+      }
+      .nav-tooltip {
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--accent-color-dark-theme);
+        color: var(--text-light-primary);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, right 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      .nav-link.on-light-bg-dot .nav-tooltip {
+        background-color: var(--bg-light-primary);
+        color: var(--text-dark-primary);
+        border: 1px solid var(--border-color-light);
+      }
+      .nav-link:hover .nav-tooltip {
+        opacity: 1;
+        visibility: visible;
+        right: 30px;
+      }
+
+      .scroll-indicator-capa {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 3;
+        opacity: 0;
+      }
+      .mouse-capa {
+        width: 24px;
+        height: 38px;
+        border: 2px solid var(--text-light-secondary);
+        border-radius: 12px;
+        position: relative;
+        margin-bottom: 8px;
+      }
+      .mouse-wheel-capa {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 3px;
+        height: 6px;
+        margin-left: -1.5px;
+        background-color: var(--text-light-secondary);
+        border-radius: 2px;
+        animation: scrollAnimCapa 1.8s ease-in-out infinite;
+      }
+      .scroll-text-capa {
+        font-size: 0.75rem;
+        color: var(--text-light-secondary);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      @keyframes scrollAnimCapa {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+      @keyframes fadeInCapaScrollIndicator {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(10px);
+        }
+        to {
+          opacity: 0.8;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      .logo-only-slide {
+        background-color: var(--bg-dark-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        border-bottom: none;
+      }
+      .logo-only-slide .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      .logo-only-slide img {
+        max-width: 50vw;
+        max-height: 50vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 992px) {
+        section {
+          padding: 70px 15px;
+        }
+        h2.section-title {
+          font-size: 2.3rem;
+          margin-bottom: 50px;
+        }
+        #viabrasil-gantt .section-title {
+          font-size: 1.8rem;
+        }
+        .capa-slide-title {
+          font-size: 2.2rem;
+        }
+        .list-section-content li {
+          font-size: 1rem;
+        }
+        .investment-table-wrapper {
+          max-width: 90%;
+        }
+        .investment-card-vista {
+          max-width: 90%;
+        }
+        .table-wrapper {
+          min-width: 700px;
+        }
+        .styled-table {
+          font-size: 0.85rem;
+        }
+        .styled-table th,
+        .styled-table td {
+          padding: 10px 12px;
+        }
+        .sectional-cover-title {
+          font-size: 2.8rem;
+        }
+      }
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 10px;
+        }
+        h2.section-title {
+          font-size: 2rem;
+          margin-bottom: 40px;
+          padding-bottom: 15px;
+        }
+        #viabrasil-gantt .section-title {
+          font-size: 1.6rem;
+        }
+        h2.section-title::after {
+          width: 70px;
+          height: 3px;
+        }
+        #viabrasil-gantt .section-title::after {
+          width: 70px;
+          height: 4px;
+        }
+
+        .capa-slide-title {
+          font-size: 1.9rem;
+        }
+        .navigation {
+          display: none;
+        }
+        .list-section-content h3 {
+          font-size: 1.3rem;
+        }
+        .list-section-content .intro-paragraph {
+          font-size: 1rem;
+        }
+        .investment-table th,
+        .investment-table td {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+        .investment-card-vista h5 {
+          font-size: 1.2rem;
+        }
+        .investment-card-vista .price {
+          font-size: 2.2rem;
+        }
+        .styled-table {
+          font-size: 0.8rem;
+        }
+        .styled-table th,
+        .styled-table td {
+          padding: 8px 10px;
+        }
+        .final-message-text {
+          font-size: 1.4rem;
+        }
+        .sectional-cover-title {
+          font-size: 2.2rem;
+        }
+      }
+      @media (max-width: 480px) {
+        h2.section-title {
+          font-size: 1.8rem;
+          margin-bottom: 35px;
+        }
+        #viabrasil-gantt .section-title {
+          font-size: 1.5rem;
+        }
+
+        /* MODIFIED: .gantt-container-inner min-width for mobile is removed below */
+        /* #viabrasil-gantt .gantt-container-inner { */
+          /* min-width: 95%; */ /* This line is removed */
+        /* } */
+
+
+        #viabrasil-gantt .gantt-header > div,
+        #viabrasil-gantt .gantt-task-name {
+          font-size: 0.68em;
+        }
+        #viabrasil-gantt .gantt-header .header-task {
+          font-size: 0.7em;
+        }
+        #viabrasil-gantt .gantt-task-name {
+          padding: 8px 5px;
+          line-height: 1.4;
+        }
+        #viabrasil-gantt .gantt-phase-cell {
+          padding: 8px 2px;
+        }
+        #viabrasil-gantt .gantt-bar-container {
+          height: 20px;
+        }
+
+        .capa-slide-title {
+          font-size: 1.7rem;
+          text-align: center;
+        }
+        .list-section-content li {
+          font-size: 0.9rem;
+          padding: 15px 20px;
+        }
+        .list-section-content h3 {
+          font-size: 1.2rem;
+        }
+        .investment-table th,
+        .investment-table td {
+          font-size: 0.85rem;
+        }
+        .investment-card-vista h5 {
+          font-size: 1.1rem;
+        }
+        .investment-card-vista .price {
+          font-size: 2rem;
+        }
+        .styled-table {
+          font-size: 0.75rem;
+        }
+        .styled-table th,
+        .styled-table td {
+          padding: 6px 8px;
+        }
+        .final-message-text {
+          font-size: 1.2rem;
+        }
+        .sectional-cover-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navigation">
+      <ul class="nav-dots">
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-0" class="nav-link active"
+            ><span class="nav-tooltip">Início W1</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-1" class="nav-link"
+            ><span class="nav-tooltip">Capa</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-2" class="nav-link"
+            ><span class="nav-tooltip">Apresentação</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-3" class="nav-link"
+            ><span class="nav-tooltip">Institucional</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-4" class="nav-link"
+            ><span class="nav-tooltip">Objetivo</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-5" class="nav-link"
+            ><span class="nav-tooltip">Riscos</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-6" class="nav-link"
+            ><span class="nav-tooltip">Riscos Atuais</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-8" class="nav-link"
+            ><span class="nav-tooltip">Proposta W1</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-9" class="nav-link"
+            ><span class="nav-tooltip">Papel W1 Consultoria</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#viabrasil-organogram-slide" class="nav-link"
+            ><span class="nav-tooltip">Estrutura VIA BRASIL S.A.</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-13" class="nav-link"
+            ><span class="nav-tooltip">Benefícios</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-14" class="nav-link"
+            ><span class="nav-tooltip">Benefícios S.A.</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-14b" class="nav-link"
+            ><span class="nav-tooltip">Comparativo Custos</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-14c" class="nav-link"
+            ><span class="nav-tooltip">Custos (5 Anos)</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-14d" class="nav-link"
+            ><span class="nav-tooltip">Custos (10 Anos)</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-14e" class="nav-link"
+            ><span class="nav-tooltip">Economia Venda</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-15" class="nav-link"
+            ><span class="nav-tooltip">Execução</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#viabrasil-gantt" class="nav-link"
+            ><span class="nav-tooltip">Cronograma VIA BRASIL</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-23" class="nav-link"
+            ><span class="nav-tooltip">Entregas</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-24" class="nav-link"
+            ><span class="nav-tooltip">Entregáveis</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-25" class="nav-link"
+            ><span class="nav-tooltip">Custo</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-26" class="nav-link"
+            ><span class="nav-tooltip">Investimento</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-27" class="nav-link"
+            ><span class="nav-tooltip">Invest. à Vista</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-28" class="nav-link"
+            ><span class="nav-tooltip">Ação</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-29" class="nav-link"
+            ><span class="nav-tooltip">Próximos Passos</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-29b" class="nav-link"
+            ><span class="nav-tooltip">Passos Imediatos</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-29c" class="nav-link"
+            ><span class="nav-tooltip">Início Trabalhos</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-30" class="nav-link"
+            ><span class="nav-tooltip">Fim</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-31" class="nav-link"
+            ><span class="nav-tooltip">Obrigado</span></a
+          >
+        </li>
+        <li class="nav-dot">
+          <a href="#kamby-final-slide-32" class="nav-link"
+            ><span class="nav-tooltip">Fim W1</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <section id="kamby-final-slide-0" class="logo-only-slide">
+      <div class="container">
+        <img src="https://i.postimg.cc/MKD8hCs3/logo-w1.png" alt="W1 Logo" />
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-1" class="capa-section">
+      <div class="capa-content">
+        <div class="logo-container-capa">
+          <div class="logo-shape-capa">
+            <div class="logo-text-capa">W<span>1</span></div>
+          </div>
+        </div>
+        <h1 class="capa-slide-title">
+          PLANEJAMENTO ESTRATÉGICO <br />
+          <span class="highlight">VIA BRASIL S.A.</span>
+        </h1>
+        <p class="capa-details">Maio de 2025</p>
+      </div>
+      <div class="scroll-indicator-capa">
+        <div class="mouse-capa"><div class="mouse-wheel-capa"></div></div>
+        <span class="scroll-text-capa">Explore</span>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-2" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">APRESENTAÇÃO E OBJETIVOS</h1>
+      </div>
+    </section>
+
+<section
+      id="kamby-final-slide-3"
+      class="list-section-content light-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Apresentação Institucional – VIA BRASIL
+        </h2>
+        <div class="institutional-content-wrapper">
+          <div class="institutional-text-content">
+            <p class="intro-paragraph">
+              A Via Brasil Empreendimentos e Participações LTDA, com mais de 20 anos de atuação como holding de instituições não-financeiras, está em processo de transformação em Sociedade Anônima de capital fechado. Essa mudança tem como principal objetivo profissionalizar a gestão, organizar a governança corporativa e fortalecer a proteção patrimonial da família.
+            </p>
+            <p class="intro-paragraph">
+              Como parte desse processo, será realizada a integralização de imóveis já declarados no valor total de R$ 4.620.102,40 ao capital social da nova S.A., centralizando a administração dos ativos e garantindo maior segurança e eficiência na sucessão.
+            </p>
+            <p class="intro-paragraph">
+              A nova estrutura permitirá a implementação de conselhos e mecanismos de controle que aumentam a transparência e reduzem riscos. Trata-se de um passo estratégico para consolidar o legado familiar e preparar a Via Brasil para crescer com solidez nas próximas gerações.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="kamby-final-slide-4" class="list-section-content">
+      <div class="container">
+        <h2 class="section-title">Objetivo do Projeto</h2>
+        <ul style="max-width: 800px; width: 100%; margin: 0 auto">
+          <li>
+            <span><strong>Transformação Societária Estratégica:</strong> Converter a Via Brasil Empreendimentos e Participações LTDA (atualmente uma Sociedade Simples Limitada ) em uma Sociedade Anônima (S.A.) de capital fechado. Esta transformação visa modernizar a estrutura da empresa, alinhando-a com as melhores práticas de mercado para gestão patrimonial e governança.</span>
+          </li>
+          <li>
+            <span><strong>Integralização e Proteção Patrimonial:</strong> Integralizar ativos imobiliários, avaliados em R$ 4.620.102,40, ao capital social da nova S.A.</span>
+          </li>
+          <li>
+            <span><strong>Implementação de Governança Corporativa:</strong> Estabelecer uma estrutura clara e eficiente de governança corporativa, adaptada ao modelo de Sociedade Anônima de capital fechado.</span>
+          </li>
+          <li>
+            <span><strong>Planejamento Sucessório e Continuidade:</strong> Facilitar o planejamento da sucessão familiar e a transição do patrimônio para as futuras gerações de forma organizada e segura. Garantir a perenidade dos negócios e a preservação do legado familiar.</span>
+          </li>
+          <li>
+            <span><strong>Otimização da Gestão e Flexibilidade:</strong> Simplificar a administração dos bens e otimizar a tomada de decisões estratégicas.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-5" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">DIAGNÓSTICO DE RISCOS</h1>
+      </div>
+    </section>
+
+<section
+      id="kamby-final-slide-6"
+      class="list-section-content light-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Riscos da Estrutura Atual (LTDA)
+        </h2>
+        <p class="intro-paragraph centered">
+          A atual estrutura como LTDA apresenta riscos que podem ser mitigados com a transformação para S.A.:
+        </p>
+        <ul style="max-width: 900px">
+          <li>
+            <span><strong>Responsabilidade dos Sócios:</strong> Risco médio de atingir o patrimônio pessoal dos sócios (ex.: dívidas trabalhistas ou fiscais).</span>
+          </li>
+          <li>
+            <span><strong>Sucessão Patrimonial Complexa:</strong> Inventário de quotas é caro, demorado e sujeito a litígios.</span>
+          </li>
+          <li>
+            <span><strong>Gestão e Governança Limitadas:</strong> LTDA depende de decisões pessoais e informalidade.</span>
+          </li>
+          <li>
+            <span><strong>Acesso Restrito a Capital:</strong> LTDA enfrenta mais barreiras para obter crédito e captar recursos.</span>
+          </li>
+          <li>
+            <span><strong>Menor Proteção Patrimonial:</strong> Confusão patrimonial é mais comum na LTDA.</span>
+          </li>
+          <li>
+            <span><strong>Rigidez para Crescimento:</strong> Mudanças contratuais são difíceis. Expansões e novos sócios/investidores são limitados.</span>
+          </li>
+          <li>
+            <span><strong>Conflitos Societários:</strong> Saída ou morte de sócio pode causar instabilidade.</span>
+          </li>
+          <li>
+            <span><strong>Planejamento Tributário Limitado:</strong> Alienações na LTDA podem gerar alta carga tributária.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-8" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">PROPOSTA ESTRATÉGICA W1</h1>
+      </div>
+    </section>
+
+    <section
+      id="kamby-final-slide-9"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">O Papel da W1 Consultoria</h2>
+        <p class="intro-paragraph">
+          A W1 Consultoria Patrimonial será sua parceira estratégica nesta
+          jornada de transformação. Nossa abordagem é eminentemente societária,
+          com foco primordial na proteção patrimonial e na perenidade do
+          negócio.
+        </p>
+        <ul>
+          <li>
+            <span
+              ><strong>Expertise Especializada:</strong> Oferecemos conhecimento
+              aprofundado em direito societário, governança corporativa e
+              planejamento sucessório, garantindo que todas as etapas sejam
+              executadas com excelência.</span
+            >
+          </li>
+          <li>
+            <span
+              ><strong>Coordenação Integral:</strong> Atuaremos na coordenação
+              de todo o processo, desde a concepção da estrutura até a sua
+              formalização, interface com órgãos reguladores (JUCEMG, Receita
+              Federal) e demais profissionais envolvidos.</span
+            >
+          </li>
+          <li>
+            <span
+              ><strong>Proteção Patrimonial Integrada:</strong> Nossa premissa é
+              construir uma estrutura que não só otimize o negócio, mas que
+              também resguarde o patrimônio pessoal dos sócios e da
+              família.</span
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      id="viabrasil-organogram-slide"
+      class="organogram-section light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          VIA BRASIL EMPREENDIMENTOS E PARTICIPAÇÕES S.A.
+        </h2>
+        <div class="organogram-container">
+          <div class="level">
+            <div class="node sa-node holding-sa" id="viabrasilSA-node">
+              <h4>VIA BRASIL EMPREENDIMENTOS E PARTICIPAÇÕES S.A.</h4>
+              <p class="cnpj-text">
+                CNPJ: 05.150.758/0001-20 (Pós-transformação)
+              </p>
+              <p class="info-text">
+                Holding Patrimonial e Desenvolvimento de Atividade Agropecuária.
+              </p>
+            </div>
+          </div>
+          <div class="connector vertical-medium"></div>
+
+          <div class="structure-group">
+            <div class="column governance-section">
+              <h3 class="column-title">Governança Corporativa</h3>
+              <div class="node governance-assembly" id="viabrasil-assembleia">
+                <h4>Assembleia Geral de Acionistas</h4>
+                <p>
+                  Órgão soberano, delibera sobre matérias estratégicas e
+                  aprovações magnas.
+                </p>
+              </div>
+              <div class="connector vertical-short"></div>
+              <div class="node governance-board" id="viabrasil-conselho">
+                <h4>Conselho de Administração</h4>
+                <p>
+                  Define o planejamento estratégico, supervisiona a Diretoria e
+                  zela pelos valores da empresa.
+                </p>
+              </div>
+              <div class="connector vertical-short"></div>
+              <div class="node diretoria" id="viabrasil-diretoria">
+                <h4>Diretoria Executiva</h4>
+                <p>
+                  Gestão executiva da S.A., dos ativos imobiliários e da
+                  atividade agropecuária.
+                </p>
+              </div>
+            </div>
+
+            <div class="column shareholders-section">
+              <h3 class="column-title">Quadro Acionário</h3>
+              <div class="node shareholders-group" id="viabrasil-acionistas">
+                <h4>Composição Acionária Principal</h4>
+                <ul>
+                  <li>
+                    <strong>Família Controladora:</strong> (Participação a ser
+                    definida no Estatuto/Acordo)
+                  </li>
+                </ul>
+                <p class="info-text">
+                  Estrutura de participação definida no Estatuto Social e Acordo
+                  de Acionistas, visando a proteção patrimonial e o planejamento
+                  sucessório.
+                </p>
+              </div>
+            </div>
+
+            <div class="column assets-management-section">
+              <h3 class="column-title">Patrimônio Gerido e Atividades</h3>
+              <div class="node assets-management-entity" id="viabrasil-ativos">
+                <h4>Gestão de Ativos e Operações</h4>
+                <p>VIA BRASIL S.A. focará em:</p>
+                <ul>
+                  <li>
+                    <strong>Administração e rentabilização</strong> dos imóveis
+                    integralizados (Valor: R$ 4.620.102,40).
+                  </li>
+                  <li>
+                    <strong>Desenvolvimento e gestão</strong> da nova atividade
+                    agropecuária.
+                  </li>
+                  <li>
+                    <strong>Busca por otimização</strong> fiscal e proteção do
+                    patrimônio.
+                  </li>
+                  <li>
+                    <strong>Implementação das diretrizes</strong> de governança
+                    e sucessão.
+                  </li>
+                </ul>
+                <p class="info-text">
+                  Entidade central para a gestão do patrimônio imobiliário e das
+                  novas operações agrícolas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-13" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">BENEFÍCIOS DA TRANSFORMAÇÃO</h1>
+      </div>
+    </section>
+
+<section
+      id="kamby-final-slide-14"
+      class="list-section-content light-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Benefícios da Nova Estrutura S.A.
+        </h2>
+        <p class="intro-paragraph centered">
+          A migração da Via Brasil LTDA para S.A. de capital fechado traz ganhos estratégicos em várias frentes:
+        </p>
+
+        <ul>
+          <li><span>Proteção Patrimonial Reforçada: Separação clara entre bens da empresa e dos acionistas e responsabilidade limitada ao valor das ações.</span></li>
+        </ul>
+
+        <ul>
+          <li><span>Sucessão Simples e Econômica: Doação de ações facilita o repasse aos herdeiros. Redução de custos com inventário e impostos (ITCMD, honorários, etc.).</span></li>
+        </ul>
+
+        <ul>
+          <li><span>Eficiência Tributária: Planejamento fiscal mais inteligente para venda de ativos. Possibilidade de imunidade de ITBI na integralização dos imóveis.</span></li>
+        </ul>
+
+        <ul>
+          <li><span>Continuidade do Legado Familiar: Estrutura robusta que protege o negócio e o patrimônio por gerações.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      id="kamby-final-slide-14b"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Comparativo de Custos Sucessórios Estimados
+        </h2>
+        <div
+          class="table-wrapper"
+          style="max-width: 950px; margin-left: auto; margin-right: auto"
+        >
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Sistema / Característica</th>
+                <th>Cenário Atual (Inventário Direto)</th>
+                <th>Sucessão Prevista (Via Holding S.A.)</th>
+                <th>Fase Projeto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Valor dos Bens Base para Cálculo</td>
+                <td>R$ 250.000.000,00</td>
+                <td>R$ 4.620.102,40</td>
+                <td><em>N/A</em></td>
+              </tr>
+              <tr>
+                <td>ITBI (Estimado s/ Integralização/Doação de Cotas/Ações)</td>
+                <td>R$ 0,00</td>
+                <td>R$ 7.361.396,93</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Custos de Transformação Societária em S.A.</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>ITCMD (Imposto sobre Herança / Doação - Estimado)</td>
+                <td>R$ 12.500.000,00</td>
+                <td>R$ 231.005,12</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>
+                  Honorários Advocatícios (Estimativa Inventário / Holding)
+                </td>
+                <td>R$ 12.500.000,00</td>
+                <td>R$ 30.000,00</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total Estimado dos Custos Sucessórios</td>
+                <td>R$ 25.000.000,00</td>
+                <td>R$ 7.622.402,05</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" class="economy-cell">
+                  Economia Estimada com a Estrutura S.A.: R$ 17.377.597,95
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="kamby-final-slide-14c"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Sucessão em 5 Anos
+        </h2>
+        <div
+          class="table-wrapper"
+          style="max-width: 950px; margin-left: auto; margin-right: auto"
+        >
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Sistema / Característica</th>
+                <th>Cenário Atual (Inventário Direto)</th>
+                <th>Sucessão Prevista (Via Holding S.A.)</th>
+                <th>Fase Projeto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Valor dos Bens Base para Cálculo (Projetado)</td>
+                <td>R$ 332.352.888,00</td>
+                <td>R$ 3.767.105,36</td>
+                <td><em>N/A</em></td>
+              </tr>
+              <tr>
+                <td>ITBI (Estimado s/ Integralização/Doação de Cotas/Ações)</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Custos de Transformação Societária em S.A.</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>ITCMD (Imposto sobre Herança / Doação - Estimado)</td>
+                <td>R$ 26.588.231,04</td>
+                <td>R$ 301.368,43</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>
+                  Honorários Advocatícios (Estimativa Inventário / Holding)
+                </td>
+                <td>R$ 16.617.644,40</td>
+                <td>R$ 30.000,00</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total Estimado dos Custos Sucessórios</td>
+                <td>R$ 43.205.875,44</td>
+                <td>R$ 331.368,43</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" class="economy-cell">
+                  Economia Estimada com a Estrutura S.A. (em 5 anos): R$
+                  42.874.507,01
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="kamby-final-slide-14d"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Sucessão em 10 Anos
+        </h2>
+        <div
+          class="table-wrapper"
+          style="max-width: 950px; margin-left: auto; margin-right: auto"
+        >
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Sistema / Característica</th>
+                <th>Cenário Atual (Inventário Direto)</th>
+                <th>Sucessão Prevista (Via Holding S.A.)</th>
+                <th>Fase Projeto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Valor dos Bens Base para Cálculo (Projetado)</td>
+                <td>R$ 450.677.313,89</td>
+                <td>R$ 3.071.594,86</td>
+                <td><em>N/A</em></td>
+              </tr>
+              <tr>
+                <td>ITBI (Estimado s/ Integralização/Doação de Cotas/Ações)</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Custos de Transformação Societária em S.A.</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>ITCMD (Imposto sobre Herança / Doação - Estimado)</td>
+                <td>R$ 36.054.185,11</td>
+                <td>R$ 245.727,59</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>
+                  Honorários Advocatícios (Estimativa Inventário / Holding)
+                </td>
+                <td>R$ 22.533.865,69</td>
+                <td>R$ 30.000,00</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total Estimado dos Custos Sucessórios</td>
+                <td>R$ 58.588.050,81</td>
+                <td>R$ 275.727,59</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" class="economy-cell">
+                  Economia Estimada com a Estrutura S.A. (em 10 anos): R$
+                  58.312.323,22
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+    </section>
+    <section
+      id="kamby-final-slide-14e"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Economia Tributária na Venda de Patrimônio (Imóveis)
+        </h2>
+        <div
+          class="table-wrapper"
+          style="max-width: 850px; margin-left: auto; margin-right: auto"
+        >
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>Pessoa Física</th>
+                <th>Holding</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="font-weight: bold">
+                <td>IMPOSTO ESTIMADO NA VENDA</td>
+                <td>R$ 42.941.482,08</td>
+                <td>R$ 16.750.000,00</td>
+              </tr>
+              <tr>
+                <td>Base de Cálculo do Imposto</td>
+                <td>
+                  Ganho de Capital (Diferença entre valor de venda e custo de
+                  aquisição declarado)
+                </td>
+                <td>
+                  Receita Bruta (Valor total da venda do imóvel, se
+                  caracterizado como atividade imobiliária/estoque)
+                </td>
+              </tr>
+              <tr>
+                <td>Alíquota Aplicável (Referência)</td>
+                <td>15% a 22,5% (sobre o Ganho de Capital)</td>
+                <td>
+                  Aproximadamente 5,93% a 6,73% (PIS, COFINS, IRPJ, CSLL sobre a
+                  Receita Bruta)
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="economy-cell" style="text-align: center">
+                  Economia Estimada com a Holding na Venda: R$ 26.191.482,08
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="kamby-final-slide-15" class="sectional-cover-slide">
+      <div class="container">
+        </div>
+        <h1 class="sectional-cover-title">PLANO DE EXECUÇÃO</h1>
+      </div>
+    </section>
+
+    <section id="viabrasil-gantt" class="gantt-section">
+      <div class="container">
+        <h2 class="section-title">Cronograma do Projeto - VIA BRASIL S.A.</h2>
+        <div class="gantt-chart-wrapper">
+          <div class="gantt-container-inner">
+            <div class="gantt-header">
+              <div class="header-task">Fase / Entregável Principal</div>
+              <div>Fase 1</div>
+              <div>Fase 2</div>
+              <div>Fase 3</div>
+              <div>Fase 4</div>
+              <div>Fase 5</div>
+              <div>Fase 6</div>
+              <div>Ano 1</div>
+              <div>Ano 2</div>
+              <div>Ano 3</div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Diagnóstico e Planejamento Estratégico (Due Diligence, Plano de
+                Transformação)
+              </div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase1"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Avaliação Patrimonial (Laudos, Atos
+                Societários)
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase2"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Execução da Transformação Societária e Integralização de Bens
+                (Registros, CNPJ)
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase3"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Implementação da Governança Corporativa e Operacionalização da
+                S.A.
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase4"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Estruturação do Planejamento Sucessório Detalhado
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase5"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Finalização, Documentos (Manuais, Relatórios) e Suporte Inicial
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-fase6-docs"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+            </div>
+
+            <div class="gantt-row">
+              <div class="gantt-task-name">
+                Consultoria Contínua e Acompanhamento Estratégico (Pós-Projeto)
+              </div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell"></div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-ongoing"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-ongoing"></div>
+                </div>
+              </div>
+              <div class="gantt-phase-cell">
+                <div class="gantt-bar-container">
+                  <div class="gantt-bar bar-ongoing"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-23" class="sectional-cover-slide">
+      <div class="container">
+        </div>
+        <h1 class="sectional-cover-title">ENTREGÁVEIS</h1>
+      </div>
+    </section>
+
+<section
+      id="kamby-final-slide-24"
+      class="list-section-content light-gray-section"
+    >
+      <div class="container">
+        <h2 class="section-title on-light-bg">
+          Principais Entregáveis do Projeto
+        </h2>
+        <p class="intro-paragraph centered">
+          Ao final das fases principais do projeto, a VIA BRASIL (futura VIA BRASIL S.A.) terá:
+        </p>
+        <ul>
+          <li>
+            <span><strong>Relatório Diagnóstico:</strong> Análise completa da estrutura societária e patrimonial da LTDA.</span>
+          </li>
+          <li>
+            <span><strong>Plano de Reestruturação:</strong> Estratégia da nova S.A., com justificativas e planejamento tributário.</span>
+          </li>
+          <li>
+            <span><strong>Governança Corporativa: Minuta de Acordo de Acionistas (se aplicável) e Diretrizes e modelos de regimentos internos.</strong>
+            </span>
+          </li>
+          <li>
+            <span><strong>Transferência e integralização dos imóveis e pedido de imunidade de ITBI</strong>
+            </span>
+          </li>
+          <li>
+            <span><strong>Planejamento Sucessório:</strong> Recomendações e minutas para facilitar a sucessão familiar na S.A.</span>
+          </li>
+          <li>
+            <span><strong>Relatórios de Acompanhamento:</strong> Atualizações periódicas do projeto.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-25" class="sectional-cover-slide">
+      <div class="container">
+        </div>
+        <h1 class="sectional-cover-title">INVESTIMENTO</h1>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-26">
+      <div class="container">
+        <h2 class="section-title">Investimento Parcelado</h2>
+        <p class="investment-subtitle">
+          Personalizado para a Família e VIA BRASIL
+        </p>
+        <p class="payment-method-title">
+          Opções de Pagamento via Cartão de Crédito
+        </p>
+        <div class="investment-table-wrapper">
+          <table class="investment-table">
+            <thead>
+              <tr>
+                <th>Parcelamento</th>
+                <th>Valor da Parcela</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>6x</td>
+                <td>R$ 35.516,67</td>
+              </tr>
+              <tr>
+                <td>3x</td>
+                <td>R$ 69.680,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-27">
+      <div class="container">
+        <h2 class="section-title">Investimento à Vista</h2>
+        <p class="investment-subtitle">
+          Condição Especial para a Família e VIA BRASIL
+        </p>
+        <div class="investment-card-vista">
+          <h5>Investimento à Vista (Pix ou Boleto)</h5>
+          <span class="price">R$ 200.600,00</span>
+        </div>
+        <p
+          class="list-section-content intro-paragraph centered"
+          style="
+            font-size: 0.9rem;
+            margin-top: 30px;
+            color: var(--text-light-secondary);
+          "
+        >
+          Esta opção oferece um valor diferenciado para pagamento único,
+          agilizando o início dos trabalhos e a concretização dos benefícios da
+          reestruturação.
+        </p>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-28" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">PRÓXIMOS PASSOS</h1>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-29" class="list-section-content">
+      <div class="container">
+        <h2 class="section-title">Próximos Passos</h2>
+        <p
+          class="intro-paragraph centered"
+          style="color: var(--text-light-primary); max-width: 850px"
+        >
+          A transformação da VIA BRASIL LTDA em uma S.A. de Capital Fechado,
+          com a implementação de governança corporativa e organização
+          societária, é um investimento estratégico no futuro da sua empresa. A
+          W1 Consultoria Patrimonial está pronta para guiar você nessa jornada.
+        </p>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-29b" class="list-section-content">
+      <div class="container">
+        <h2 class="section-title">Próximos Passos Imediatos</h2>
+        <ul style="max-width: 700px; margin-top: 20px">
+          <li>
+            <span
+              >Enviar Informações Pessoais (para qualificação dos
+              sócios/acionistas).</span
+            >
+          </li>
+          <li>
+            <span>Confecção do Contrato de Prestação de Serviços W1.</span>
+          </li>
+          <li>
+            <span
+              >Assinatura do Contrato (digitalmente, via plataforma
+              segura).</span
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-29c" class="list-section-content">
+      <div class="container">
+        <h2 class="section-title">Início dos Trabalhos</h2>
+        <p
+          class="intro-paragraph centered"
+          style="
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--text-light-primary);
+            max-width: 850px;
+          "
+        >
+          Com a assinatura do contrato, iniciaremos imediatamente as análises
+          detalhadas e a elaboração de todos os documentos societários
+          necessários para a transformação.
+        </p>
+        <p
+          class="intro-paragraph centered"
+          style="
+            margin-top: 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light-primary);
+            max-width: 850px;
+          "
+        >
+          Convidamos você a dar este passo decisivo para a perenidade e
+          prosperidade da
+          <strong>VIA BRASIL S.A.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-30" class="sectional-cover-slide">
+      <div class="container">
+        <div class="kamby-logo-container">
+        </div>
+        <h1 class="sectional-cover-title">ENCERRAMENTO</h1>
+      </div>
+    </section>
+
+    <section
+      id="kamby-final-slide-31"
+      style="background-color: var(--bg-dark-secondary)"
+    >
+      <div class="container">
+        <h2 class="section-title">Agradecimentos</h2>
+        <p class="final-message-text">
+          Empresas que se estruturam com visão de futuro não apenas protegem o
+          que construíram — elas garantem que o legado sobreviva ao tempo, com
+          segurança, clareza e paz para todas as gerações.
+        </p>
+      </div>
+    </section>
+
+    <section id="kamby-final-slide-32" class="logo-only-slide">
+      <div class="container">
+        <img src="https://i.postimg.cc/MKD8hCs3/logo-w1.png" alt="W1 Logo" />
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const capaTitleHighlight = document.querySelector(
+          "#kamby-final-slide-1 .capa-slide-title .highlight"
+        );
+        const titleElement = document.querySelector("title");
+
+        if (capaTitleHighlight) {
+          capaTitleHighlight.textContent = "VIA BRASIL S.A.";
+        }
+        if (titleElement) {
+          document.title = `W1 Consultoria: Planejamento Estratégico – VIA BRASIL S.A.`;
+        }
+
+        const sections = document.querySelectorAll(
+          "section[id^='kamby-final-slide-'], section[id='viabrasil-gantt'], section[id='viabrasil-organogram-slide']"
+        );
+        const navLinks = document.querySelectorAll(".navigation .nav-link");
+        const scrollIndicator = document.querySelector(
+          ".scroll-indicator-capa"
+        );
+
+        if (scrollIndicator) {
+          setTimeout(() => {
+            scrollIndicator.style.animation =
+              "fadeInCapaScrollIndicator 1s ease forwards";
+            scrollIndicator.style.opacity = "0.8";
+          }, 500);
+        }
+
+        if (sections.length > 0 && navLinks.length > 0) {
+          const sectionObserverOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.55,
+          };
+
+          const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const currentSectionId = entry.target.id;
+                let isLightSection =
+                  entry.target.classList.contains("light-section") ||
+                  entry.target.classList.contains("light-gray-section") ||
+                  (entry.target.id === "viabrasil-gantt" &&
+                    entry.target.classList.contains("gantt-section")) ||
+                  (entry.target.id === "viabrasil-organogram-slide" &&
+                    entry.target.classList.contains("organogram-section"));
+
+                let isCover =
+                  entry.target.classList.contains("sectional-cover-slide") ||
+                  entry.target.classList.contains("capa-section") ||
+                  entry.target.classList.contains("logo-only-slide");
+
+                navLinks.forEach((link) => {
+                  link.classList.remove("active");
+                  const linkHref = link.getAttribute("href").substring(1);
+                  if (linkHref === currentSectionId) {
+                    link.classList.add("active");
+                  }
+
+                  if (link.classList.contains("active")) {
+                    if (isLightSection && !isCover) {
+                      navLinks.forEach((nl) =>
+                        nl.classList.add("on-light-bg-dot")
+                      );
+                    } else {
+                      navLinks.forEach((nl) =>
+                        nl.classList.remove("on-light-bg-dot")
+                      );
+                    }
+                  }
+                });
+              }
+            });
+          }, sectionObserverOptions);
+
+          sections.forEach((section) => {
+            sectionObserver.observe(section);
+          });
+
+          if (sections.length > 0) {
+            const firstSection = sections[0];
+            let firstIsLight =
+              firstSection.classList.contains("light-section") ||
+              firstSection.classList.contains("light-gray-section") ||
+              (firstSection.id === "viabrasil-gantt" &&
+                firstSection.classList.contains("gantt-section")) ||
+              (firstSection.id === "viabrasil-organogram-slide" &&
+                firstSection.classList.contains("organogram-section"));
+            let firstIsCover =
+              firstSection.classList.contains("sectional-cover-slide") ||
+              firstSection.classList.contains("capa-section") ||
+              firstSection.classList.contains("logo-only-slide");
+
+            if (firstIsLight && !firstIsCover) {
+              navLinks.forEach((nl) => nl.classList.add("on-light-bg-dot"));
+            } else {
+              navLinks.forEach((nl) => nl.classList.remove("on-light-bg-dot"));
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
